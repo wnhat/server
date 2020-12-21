@@ -72,6 +72,7 @@
   <ItemGroup>
     <Compile Include="container.cs" />
     <Compile Include="File_container.cs" />
+    <Compile Include="IP_TR.cs" />
     <Compile Include="On_inspect_panel_container.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -80,8 +81,6 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="NewFolder1\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
