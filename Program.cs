@@ -42,6 +42,7 @@ namespace server
             //    poller.Run();
             //}
             IP_TR asd = new IP_TR();
+            List<string>bb = asd.get_ip_byeq(PC_name.AVI, new List<int> { 1, 2, 3 });
         }
     }
 }
