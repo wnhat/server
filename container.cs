@@ -7,10 +7,22 @@ using System.Threading.Tasks;
 
 namespace server
 {
+    enum judge_grade
+    {
+        S,
+        A,
+        T,
+        Q,
+        W,
+        D,
+        E,
+        F,
+    }
     class container
     {
 
     }
+
     class Panel_queue
     {
         public string Panel_id;
@@ -45,5 +57,30 @@ namespace server
         //public string Panel_id { get => panel_id; set => panel_id = value; }
         //public DirectoryInfo Origin_image_path { get => origin_image_path; set => origin_image_path = value; }
         //public DirectoryInfo Result_path { get => result_path; set => result_path = value; }
+    }
+
+    class Product_mission_panel
+    {
+        public string panel_id { get; set; }
+        public string repetition { get; set; }
+        public panel_judge_table panel_judge { get; set; }
+    }
+
+    class panel_judge_table
+    {
+
+    }
+
+    class panel_judgement
+    {
+        Operator op;
+        judge_grade Judge;
+
+    }
+
+    class Operator
+    {
+        public string name { get; set; }
+        public string id { get; set; }
     }
 }

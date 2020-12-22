@@ -76,6 +76,7 @@
     <Compile Include="On_inspect_panel_container.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="sqlserver_connecter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

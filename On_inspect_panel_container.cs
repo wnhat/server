@@ -8,11 +8,9 @@ namespace server
 {
     class On_inspect_panel_container
     {
-        
         public On_inspect_panel_container()
         {
 
         }
     }
-
 }
