@@ -156,4 +156,29 @@ namespace server
         // virtual public void Serch_file() {}
         // TODO: use log lib;
     }
+
+    class Product_mission_panel
+    {
+        public string panel_id { get; set; }
+        public string repetition { get; set; }
+        public panel_judge_table panel_judge { get; set; }
+    }
+
+    class panel_judge_table
+    {
+
+    }
+
+    class panel_judgement
+    {
+        Operator op;
+        judge_grade Judge;
+
+    }
+
+    class Operator
+    {
+        public string name { get; set; }
+        public string id { get; set; }
+    }
 }
