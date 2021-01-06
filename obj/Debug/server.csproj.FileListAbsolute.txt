@@ -25,9 +25,6 @@ D:\program\c#\server\obj\Debug\server.csproj.CopyComplete
 D:\program\c#\server\obj\Debug\server.exe
 D:\program\c#\server\obj\Debug\server.pdb
 D:\1218180\program2\c#\server\bin\Debug\server.exe.config
-D:\1218180\program2\c#\server\obj\Debug\server.exe
-D:\1218180\program2\c#\server\obj\Debug\server.pdb
-D:\1218180\program2\c#\server\obj\Debug\server.csprojResolveAssemblyReference.cache
 D:\1218180\program2\c#\server\bin\Debug\server.exe
 D:\1218180\program2\c#\server\bin\Debug\server.pdb
 D:\1218180\program2\c#\server\bin\Debug\AsyncIO.dll
@@ -48,3 +45,5 @@ D:\1218180\program2\c#\server\bin\Debug\System.Memory.xml
 D:\1218180\program2\c#\server\bin\Debug\System.Runtime.CompilerServices.Unsafe.xml
 D:\1218180\program2\c#\server\bin\Debug\System.Threading.Tasks.Extensions.xml
 D:\1218180\program2\c#\server\bin\Debug\System.ValueTuple.xml
+D:\1218180\program2\c#\server\obj\Debug\server.exe
+D:\1218180\program2\c#\server\obj\Debug\server.pdb

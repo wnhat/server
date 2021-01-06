@@ -6,42 +6,73 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Data.SqlClient;
+using System.Data;
 
 namespace server
 {
     class Program
     {
-        
         static void Main(string[] args)
         {
-            //ResponseSocket responseSocket = new ResponseSocket("@tcp://*:5555");
+            old();
+            //test();
+        }
 
-            //var timer = new NetMQTimer(TimeSpan.FromSeconds(2));
-            //Console.WriteLine("start the poller");
+        static void test()
+        {
+            SqlServerConnector sqlserver = new SqlServerConnector();
+            sqlserver.get_oninspect_mission();
+        }
+
+        static void old()
+        {
+            var timer = new NetMQTimer(TimeSpan.FromSeconds(1800));
+            ResponseSocket responseSocket = new ResponseSocket("@tcp://*:5555");
             //using (var req = new RequestSocket(">tcp://127.0.0.1:5555"))
-            //using (var poller = new NetMQPoller { responseSocket, timer })
-            //{
-            //    responseSocket.ReceiveReady += (s, a) => 
-            //    {
-            //        //
-            //        bool more;
-            //        string messageIn = a.Socket.ReceiveFrameString(out more);
-            //        Console.WriteLine("messageIn = {0}", messageIn);
-            //        a.Socket.SendFrame("World");
-            //        for (int i = 0; i < 1000000000; i++)
-            //        {
-            //            long b = i * i;
-            //        }
-            //        Console.WriteLine("finish");
-            //    };
-            //    timer.Elapsed += (s, a) =>
-            //    {
-            //        //
-            //        Console.WriteLine("start refresh the panel list");
-            //    };
-            //    poller.Run();
-            //}
-            IP_TR asd = new IP_TR();
+            using (var poller = new NetMQPoller { responseSocket, timer })
+            {
+                
+                SqlServerConnector sqlserver = new SqlServerConnector();
+                IP_TR ip_tr = new IP_TR();
+                Filecontainer file_container = new Filecontainer(ip_tr);
+                OnInspectPanelContainer MissionManager = new OnInspectPanelContainer(sqlserver, file_container);
+
+                responseSocket.ReceiveReady += (s, a) =>
+                {
+                    bool more;
+                    string messageIn = a.Socket.ReceiveFrameString(out more);
+                    if (messageIn == "AddMisionByServer")
+                    {
+                        Console.WriteLine("start add mission");
+                        MissionManager.AddMisionByServer();
+                        a.Socket.SendFrame("end add");
+                    }
+                    else if (messageIn == "CleanMission")
+                    {
+                        // do something else.
+                        Console.WriteLine("start clean");
+                        MissionManager.MissionQueue.Clear();
+                        a.Socket.SendFrame("end clean");
+                    }
+                    else if (messageIn == "GetMission")
+                    {
+                        // do something else.
+                        Console.WriteLine("start send mission");
+                        a.Socket.SendFrame(MissionManager.GetMission().PanelId);
+                    }
+                    Console.WriteLine("count = {0}", MissionManager.MissionQueue.Count);
+                    Console.WriteLine("finish");
+                };
+
+                timer.Elapsed += (s, a) =>
+                {
+                    //
+                    Console.WriteLine("start refresh the panel list");
+                    file_container.Refresh_file_list();
+                };
+                poller.Run();
+            }
         }
     }
 }
